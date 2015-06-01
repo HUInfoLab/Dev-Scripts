@@ -4,7 +4,11 @@ import time
 bus = smbus.SMBus(1)
 
 # This is the address we setup in the Arduino Program
-address = 0x04
+address = 0x05
+
+f = open("test.txt", "wb")
+
+
 
 def writeNumber(value):
     bus.write_byte(address, value)
@@ -22,10 +26,17 @@ while True:
         continue
 
     writeNumber(var)
-    print "RPI: Hi Arduino, I sent you ", var
+    print "RPI: Hey favorite can you send me your data"
     # sleep one second
     time.sleep(1)
 
-    number = readNumber()
-    print "Arduino: Hey RPI, I received a digit ", number
-    print
+    try:
+        while var == 2 : 
+            number = readNumber()    
+            print "Arduino: Sure RPI, Here you go: ", number
+            print
+            f.write('SunlightS: ' + str(number) + '\n')
+            time.sleep(2)
+    except KeyboardInterrupt:
+            f.close()
+        
