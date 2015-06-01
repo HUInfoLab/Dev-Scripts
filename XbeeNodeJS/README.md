@@ -9,14 +9,14 @@ Show what the library does as concisely as possible, developers should be able t
 
 ## Installation
 
-1) Install node.js on the Raspberry Pi
-2) Download the project folder to the Raspberry Pi
-3) Open up your Raspberry Pi terminal and navigate to the folder in which you've downloaded the code to
-4) execute command **npm install** to install dependency libraries 
-5) Install X-CTU software on computer 
-6) Open X-CTU and connect to the Xbee console tab
-7) Go back to the Raspberry Pi and execute the command **node app** in the terminal where you had previous done **npm install**
-8) In the console tab on your computer you should see the read out from the test.txt file
+1. Install node.js on the Raspberry Pi
+2. Download the project folder to the Raspberry Pi
+3. Open up your Raspberry Pi terminal and navigate to the folder in which you've downloaded the code to
+4. execute command **npm install** to install dependency libraries 
+5. Install X-CTU software on computer 
+6. Open X-CTU and connect to the Xbee console tab
+7. Go back to the Raspberry Pi and execute the command **node app** in the terminal where you had previous done **npm install**
+8. In the console tab on your computer you should see the read out from the test.txt file
 
 ## API Reference
 
