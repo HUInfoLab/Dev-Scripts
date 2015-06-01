@@ -1,14 +1,13 @@
 {
-  "name": "XbeePiNodeJs",
+  "name": "NodejsStarterApp",
   "version": "0.0.1",
-  "description": "Communication Network for Raspberry Pi ",
+  "description": "An article analyzer ",
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
-    "xbee-api": ">=1.x.x",
-    "serialport": ">=1.x.x",
-    
+    "xbee-api": "~0.3.12",
+    "serialport": "~1.7.4"
   },
   "repository": {}
 }
