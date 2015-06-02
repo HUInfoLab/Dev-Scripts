@@ -11,7 +11,7 @@ Below is a circuit diagram for your raspberry pi and Xbee connection.
 
 ## Installation
 
-1. Install node.js on the Raspberry Pi
+1. Install [node.js](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager) on the Raspberry Pi Debian Distribution instructions 
 2. Download the project folder to the Raspberry Pi
 3. Open up your Raspberry Pi terminal and navigate to the folder in which you've downloaded the code to
 4. execute command **npm install** to install dependency libraries 
