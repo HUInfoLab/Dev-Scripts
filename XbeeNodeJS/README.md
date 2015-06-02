@@ -2,9 +2,11 @@
 
 A rudimentary piece of source code to have two Xbee's talk to eachother. One Xbee chip connected to a Raspberry Pi, where this server code will run, and one Xbee chip connected to your computer.
 
-## Code Example
+## Circuit Connection
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+Below is a circuit diagram for your raspberry pi and Xbee connection.
+
+![alt text][circuit]
 
 
 ## Installation
@@ -20,8 +22,8 @@ Show what the library does as concisely as possible, developers should be able t
 
 ## API Reference
 
-xbee-api
-serialport
+1. xbee-api
+2. serialport
 
 ## Tests
 
@@ -29,8 +31,12 @@ TBD
 
 ## Contributors
 
-Trey Morris and David Nessbeth of Howard Electrical and Computer Engineering Department
+Thank you for the tutorial and circuit diagram provided by [Sony Arouje](http://sonyarouje.com/2014/12/20/connecting-xbee-to-raspberry-pi/) 
+
+Trey Morris and David Nessbeth of Howard Electrical and Computer Engineering Department have aggregated this code to use in your project.
 
 ## License
 
 MIT License rights
+
+[circuit]: http://sonyarouje.files.wordpress.com/2014/12/connection_diagram_bb_thumb.jpg?w=605&h=480 "Circuit Diagram" 
