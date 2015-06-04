@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "xbee-api": "~0.3.12",
-    "serialport": "~1.7.4"
+    "serialport": "~1.7.4",
+    "liner": "~0.3.3"
   },
   "repository": {}
 }
