@@ -4,6 +4,36 @@ var xbee_api = require('xbee-api');
 var fs = require('fs');
 var C = xbee_api.constants;
 var liner = require('liner');
+//new setup files
+var mongoose = require('mongoose');
+var express  = require('express');
+var app      = express();                               // create our app w/ express
+var morgan = require('morgan');             // log requests to the console (express4)
+var bodyParser = require('body-parser');    // pull information from HTML POST (express4)
+var methodOverride = require('method-override'); // simulate DELETE and PUT (express4)
+
+//config
+var database = require('./config/database');
+mongoose.connect(database.url); // connect to our database
+
+app.use(express.static(__dirname + '/public')); // set the static files location /public/img
+app.use(morgan('dev'));  // log every request to the console
+app.use(bodyParser.urlencoded({'extended':'true'}));  // parse application/x-www-form-urlencoded
+app.use(bodyParser.json()); // parse application/json
+app.use(bodyParser.json({ type: 'application/vnd.api+json' })); //parse app/vnd.api+json as json
+app.use(methodOverride());
+
+// listen (start app with node app)
+app.listen(8080);
+console.log("App listening on port 8080");
+
+//setup database variables
+var myvalue = mongoose.model('myvalue', { 
+    SensorID: String,
+    SensorVal: String
+}); 
+
+
 
 
 /*
@@ -18,18 +48,9 @@ var serialport = new SerialPort("/dev/ttyAMA0", {
 */
 
 
-// config files
-var mongoose = require('mongoose');
-var database = require('./config/database');
-mongoose.connect(database.url); // connect to our database
-
-
-//setup database variables
-var sunlightSchema = mongoose.Schema({
-    SensorID: String,
-    SensorVal: String
-})
-var myvalue = mongoose.model('myvalue', sunlightSchema) 
+/*
+Automatically restart server when files change: By default, node will not monitor for file changes after your server has been started. This means you’d have to shut down and start the server every time you made a file change. This can be fixed with nodemon. To use: install nodemon globally npm install -g nodemon. Start your server with nodemon server.js now. Smooth sailing from there.
+*/
 
 
 //read file line by line
@@ -65,17 +86,22 @@ liner.on('error', function (err) {
 
 //Read from DB
 var x = 0;
-myvalue.find(function (err, myvalue) {
-    if (err) return console.error(err);
-    while (x<5) {   //need to improve iteration condition
-        console.log(myvalue[x].SensorID);
-        console.log(myvalue[x].SensorVal);
-        x++
-    };
-}) 
+app.get('/api/myvalues', function(req, res) { //print values to webpage
+    myvalue.find(function (err, myvalues) {
+        if (err) res.send(err);
+        //print values to console
+        while (x<5) {   //need to improve iteration condition
+            console.log("#" + (x+1) + " = " + myvalues[x].SensorID + ", " + myvalues[x].SensorVal);
+            x++
+        };
+        res.json(myvalues); // return all myvalues in JSON format
+    });
+});    
 
-
-
+// application -------------------------------------------------------------
+app.get('*', function(req, res) {
+    res.sendfile('./public/index.html'); // load the single view file (angular will handle the page changes on the front-end)
+});
 
 /*
 serialport.on("open", function () {
